@@ -1,28 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Todolist App</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="https://kit.fontawesome.com/970a1ca7af.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- Unicons CSS -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"/>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h2>Todo app</h2>
-            <input type="text" id="inputText" placeholder="Write something here ...">
-            <button class="addBtn">
-                <i class="fas fa-plus"></i>
-            </button>
-        </div>
-        <div class="todo">
-            <ul></ul>
-        </div>
+      <div class="input-field">
+        <textarea placeholder="Write something here ..."></textarea>
+        <i class="uil uil-notes note-icon"></i>
+      </div>
+      <ul class="todoLists">
+        <!-- To-do list -->
+      </ul>
+      <div class="pending-tasks">
+        <span>
+          Kamu mempunyai <span class="pending-num"> 0 </span> list tersisa.
+        </span>
+        <button class="clear-button">Clear all</button>
+      </div>
     </div>
     <!-- Jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <!-- JavaScript -->
     <script src="js/script.js"></script>
-</body>
+  </body>
 </html>

@@ -1,11 +1,12 @@
+/* ==== Google Fonts ==== */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 
 /* ==== Variables CSS ==== */
 :root {
     /* ==== Colors theme ==== */
-    --first-color: #f3b631;
-    --first-color-dark: #ffd06b;
-    --first-color-alt: #966b0e;
+    --first-color: #fbc531;
+    --first-color-alt: #dbaa22;
+    --color-dark-theme : #b1891c;
     --text-color: #f1ebeb;
     --body-color: #adadad;
     --gradient-color: linear-gradient(120deg, #487eb0, #fbc531);
@@ -14,127 +15,160 @@
     --body-font: 'Poppins', sans-serif;
     --normal-font-size: .938rem;
     --small-font-size: .813rem;
+    --medium-font-size: 1.1rem;
+    --large-font-size: 1.6rem;
 
     /*===== Font weight =====*/
-    --font-medium: 500;
+    --font-medium: 400;
     --font-semi-bold: 600;
 }
 
+html {
+  overflow: hidden;
+}
+
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: var(--body-font);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--body-font);
 }
-
 body {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-image: var(--gradient-color);
-}
-/* 
-ul li {
-    border-radius: 3px;
-    list-style: none;
-    position: relative;
-    margin: 10px 0;
-    padding: .500rem;
-    background: #cccaca;
-    transition: 0.2s;
-    font-size: var(--small-font-size);
-} */
-
-ul li {
-    border-radius: 3px;
-    list-style: none;
-    font-size: var(--small-font-size);
-    font-weight: var(--font-medium);
-    position: relative;
-    margin-bottom: 8px;
-    background: #aeaeae;
-    border-radius: 3px;
-    padding: 10px 15px;
-    cursor: default;
-    overflow: hidden;
-    word-wrap: break-word;
+  min-height: 100vh;
+  background-image: var(--gradient-color);
 }
 
-ul .fa-check, .fa-trash {
-    position: absolute;
-    cursor: pointer;
-    margin: 1px 0;
-}
+/* For Scrollbar */
 
-ul .fa-check {
-   right: 2.5rem;
-   color: green;
+/* width */
+::-webkit-scrollbar {
+  width: 6px;
 }
-
-ul .fa-trash {
-    right: 0.7rem;
-    color: maroon;
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f2f2f2;
 }
-
-ul .checked {
-     background-color: var(--first-color);
-     text-decoration: line-through;
-     transition: .2s;
+/* Handle */
+::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background: #ccc;
 }
-
-#inputText {
-    border-radius: 3px;
-    padding: .500rem;
-    height: 2.5rem;
-    width: 83%;
-    outline: none;
-    border: none;
-    float: left;
-}
-
-input::placeholder {
-    color: #adadad;
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #aaa;
 }
 
 .container {
-    height: 28rem;
-    width: 20rem;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
-    background: whitesmoke;
-    overflow-y: auto;
-    border-radius: 5px;
+  position: relative;
+  max-width: 480px;
+  width: 100%;
+  border-radius: 8px;
+  padding: 25px;
+  margin: 85px auto 0;
+  background-color: #fff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
-
-.container > .header {
-    background-image: var(--gradient-color);
-    padding: 1rem 1rem 3.5rem 1rem;
+.container .input-field {
+  position: relative;
+  height: 64px;
+  width: 100%;
 }
-
-.container > .header > h2 {
-    margin: 0 0 0.8rem;
-    color: var(--text-color);
+.input-field textarea {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  font-size: var(--normal-font-size);
+  font-weight: var(--font-medium);
+  border-radius: 8px;
+  padding: 18px 45px 18px 15px;
+  border: 1px solid #ccc;
+  resize: none;
 }
-
-.container > .todo {
-    padding: 1.2rem;
+.input-field textarea:focus {
+  border-color: var(--first-color);
 }
-
-.container > .header > .addBtn {
-    height: 2.5rem;
-    border: none;
-    border-radius: 3px;
-    width: 15%;
-    background: var(--first-color-dark);
-    color: var(--first-color-alt);
-    float: right;
-    font-size: 1.2rem;
-    text-align: center;
-    cursor: pointer;
-    transition: 0.3s;
+textarea::-webkit-scrollbar {
+  display: none;
 }
-
-.container > .header > .addBtn:hover {
-    background-color: var(--first-color-alt);
-    color: var(--text-color);
+.input-field .note-icon {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  font-size: var(--large-font-size);
+  color: #707070;
+}
+.input-field textarea:focus ~ .note-icon {
+  color: var(--first-color);
+}
+.container .todoLists {
+  max-height: 380px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+.todoLists .list {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  background-color: #f2f2f2;
+  padding: 20px 15px;
+  border-radius: 8px;
+  margin-top: 10px;
+  position: relative;
+  cursor: pointer;
+}
+.todoLists .list input {
+  height: 16px;
+  min-width: 16px;
+  accent-color: var(--first-color);
+}
+.todoLists .list .task {
+  margin: 0 30px 0 15px;
+  word-break: break-all;
+}
+.list input:checked ~ .task {
+  text-decoration: line-through;
+}
+.todoLists .list i {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  font-size: var(--medium-font-size);
+  color: #707070;
+  padding: 5px;
+  opacity: 0.6;
+  display: none;
+}
+.todoLists .list:hover i {
+  display: inline-flex;
+}
+.todoLists .list i:hover {
+  opacity: 1;
+}
+.container .pending-tasks {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 25px;
+}
+.pending-tasks span {
+  color: #333;
+}
+.pending-tasks .clear-button {
+  padding: 6px 12px;
+  outline: none;
+  border: none;
+  background: var(--first-color-alt);
+  color: #fff;
+  font-size: var(--smallz-font-size);
+  border-radius: 4px;
+}
+.clear-button:hover {
+  background-color: var(--color-dark-theme);
+}
+@media screen and (max-width: 350px) {
+  .container {
+    padding: 25px 10px;
+  }
 }
