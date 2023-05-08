@@ -1,0 +1,140 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+/* ==== Variables CSS ==== */
+:root {
+    /* ==== Colors theme ==== */
+    --first-color: #f3b631;
+    --first-color-dark: #ffd06b;
+    --first-color-alt: #966b0e;
+    --text-color: #f1ebeb;
+    --body-color: #adadad;
+    --gradient-color: linear-gradient(120deg, #487eb0, #fbc531);
+
+    /* ==== Typography ==== */
+    --body-font: 'Poppins', sans-serif;
+    --normal-font-size: .938rem;
+    --small-font-size: .813rem;
+
+    /*===== Font weight =====*/
+    --font-medium: 500;
+    --font-semi-bold: 600;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: var(--body-font);
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: var(--gradient-color);
+}
+/* 
+ul li {
+    border-radius: 3px;
+    list-style: none;
+    position: relative;
+    margin: 10px 0;
+    padding: .500rem;
+    background: #cccaca;
+    transition: 0.2s;
+    font-size: var(--small-font-size);
+} */
+
+ul li {
+    border-radius: 3px;
+    list-style: none;
+    font-size: var(--small-font-size);
+    font-weight: var(--font-medium);
+    position: relative;
+    margin-bottom: 8px;
+    background: #aeaeae;
+    border-radius: 3px;
+    padding: 10px 15px;
+    cursor: default;
+    overflow: hidden;
+    word-wrap: break-word;
+}
+
+ul .fa-check, .fa-trash {
+    position: absolute;
+    cursor: pointer;
+    margin: 1px 0;
+}
+
+ul .fa-check {
+   right: 2.5rem;
+   color: green;
+}
+
+ul .fa-trash {
+    right: 0.7rem;
+    color: maroon;
+}
+
+ul .checked {
+     background-color: var(--first-color);
+     text-decoration: line-through;
+     transition: .2s;
+}
+
+#inputText {
+    border-radius: 3px;
+    padding: .500rem;
+    height: 2.5rem;
+    width: 83%;
+    outline: none;
+    border: none;
+    float: left;
+}
+
+input::placeholder {
+    color: #adadad;
+}
+
+.container {
+    height: 28rem;
+    width: 20rem;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+    background: whitesmoke;
+    overflow-y: auto;
+    border-radius: 5px;
+}
+
+.container > .header {
+    background-image: var(--gradient-color);
+    padding: 1rem 1rem 3.5rem 1rem;
+}
+
+.container > .header > h2 {
+    margin: 0 0 0.8rem;
+    color: var(--text-color);
+}
+
+.container > .todo {
+    padding: 1.2rem;
+}
+
+.container > .header > .addBtn {
+    height: 2.5rem;
+    border: none;
+    border-radius: 3px;
+    width: 15%;
+    background: var(--first-color-dark);
+    color: var(--first-color-alt);
+    float: right;
+    font-size: 1.2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.container > .header > .addBtn:hover {
+    background-color: var(--first-color-alt);
+    color: var(--text-color);
+}
