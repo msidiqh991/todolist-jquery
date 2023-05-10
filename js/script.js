@@ -4,56 +4,61 @@ const inputField = document.querySelector(".input-field textarea"),
   pendingNum = document.querySelector(".pending-num"),
   clearButton = document.querySelector(".clear-button");
 
-//we will call this function while adding, deleting and checking-unchecking the task
+// Submit and pending task function
 function allTasks() {
-  let tasks = document.querySelectorAll(".pending");
+  // query selector css with jquery
+  let tasks = $(".pending");
 
-  //if tasks' length is 0 then pending num text content will be no, if not then pending num value will be task's length
+  // validasi, jika nilai (value) dari text != 0, maka data tidak akan diterima!
   pendingNum.textContent = tasks.length === 0 ? "0" : tasks.length;
 
-  let allLists = document.querySelectorAll(".list");
+  let allLists = $(".list");
   if (allLists.length > 0) {
-    todoLists.style.marginTop = "20px";
-    clearButton.style.pointerEvents = "auto";
+    $('.todoLists').css('margin-top','20px');
+    $('.clear-button').css('pointer-events', 'auto');
     return;
   }
-  todoLists.style.marginTop = "0px";
-  clearButton.style.pointerEvents = "none";
-}
+    $('.todoLists').css('margin-top','0px');
+    $('.clear-button').css('pointer-events', 'none');
+};
 
-//add task while we put value in text area and press enter
 inputField.addEventListener("keyup", (e) => {
-  let inputVal = inputField.value.trim(); //trim fuction removes space of front and back of the inputed value
+  // trim fuction removes space of front and back of the inputed value
+  let inputVal = inputField.value.trim(); 
 
-  //if enter button is clicked and inputed value length is greated than 0.
+  // if enter button is clicked and inputed value length is greated than 0.
   if (e.key === "Enter" && inputVal.length > 0) {
-    let liTag = ` <li class="list pending" onclick="handleStatus(this)">
+    let liTag = 
+        `<li class="list pending" onclick="handleStatus(this)">
           <input type="checkbox" />
           <span class="task">${inputVal}</span>
-          <i class="uil uil-trash" onclick="deleteTask(this)"></i>
+          <i class="uil uil-trash"></i>
         </li>`;
-
-    todoLists.insertAdjacentHTML("beforeend", liTag); //inserting li tag inside the todolist div
-    inputField.value = ""; //removing value from input field
+        
+    // inserting li tag inside the todolist div
+    // todoLists.insertAdjacentHTML("beforeend", liTag);
+    $('.todoLists').append(liTag);
+    // removing value from input field
+    inputField.value = ""; 
     allTasks();
   }
 });
 
-//checking and unchecking the chekbox while we click on the task
+  // Mengatur status pada checkbox?
 function handleStatus(e) {
-  const checkbox = e.querySelector("input"); //getting checkbox
+  // getting checkbox
+  const checkbox = e.querySelector('input'); 
   checkbox.checked = checkbox.checked ? false : true;
   e.classList.toggle("pending");
   allTasks();
 }
 
-//deleting task while we click on the delete icon.
-function deleteTask(e) {
-  e.parentElement.remove(); //getting parent element and remove it
-  allTasks();
-}
+// Menghapus task (list)
+$(document).on('click','.uil-trash',function(){
+  $(this).parent('li').remove();
+})
 
-//deleting all the tasks while we click on the clear button.
+// deleting all, membersihkan semua list
 clearButton.addEventListener("click", () => {
   todoLists.innerHTML = "";
   allTasks();
@@ -68,32 +73,36 @@ $(document).ready(function(){
     $(this).css('transition','ease-in-out .3s');
   });
 
-  $('.pending-num').hover(function() {
-    $(this).css('font-style','italic');
-  });
 
-//   $('#inputText').change(function(){
-//     var input = $(this).val();
-//     $('ul').append('<li>' + input + '<i class="fas fa-check"></i> <i class="fas fa-trash"></i>' + '</li>')
-//     $(this).val();
-//   });  
+  // $('.pending').change( function() {
+  //   let tasks = $('this').val();
+  //   // validasi jika task 0, input tidak akan menerima-nya hingga valuenya != 0
+  //   pendingNum.text = tasks.val().length === 0 ? "0" : tasks.val().length;
+    
+  //   let allLists = $('.list');
+  //   if (allLists.val().length > 0) {
+  //     todoLists.css('marginTop','20px');
+  //     clearButton.css('pointerEvents','auto');
+  //     return;
+  //   }
+  //   todoLists.css('marginTop','0px');
+  //   clearButton.css('pointerEvents','none');
+  // });
 
-//   $('ul').on('click', '.fa-trash', function() {
-//     $(this).parent('li').fadeOut(200);
-//     });
+ //we will call this function while adding, deleting and checking-unchecking the task
+// function allTasks() {
+//   let tasks = document.querySelectorAll(".pending");
 
-//   $('ul').on('click', '.fa-check', function() {
-//     $(this).parent('li').toggleClass('checked');
-//   });
+//   //if tasks' length is 0 then pending num text content will be no, if not then pending num value will be task's length
+//   pendingNum.textContent = tasks.length === 0 ? "0" : tasks.length;
 
-//   // Validation
-//   $('.form').submit(function() {
-//     var nama = $('#inputText').val().length;			
-
-//     if (nama == 0) {				
-        
-//         return false;
-//     }
-// });
-
+//   let allLists = document.querySelectorAll(".list");
+//   if (allLists.length > 0) {
+//     todoLists.style.marginTop = "20px";
+//     clearButton.style.pointerEvents = "auto";
+//     return;
+//   }
+//   todoLists.style.marginTop = "0px";
+//   clearButton.style.pointerEvents = "none";
+// }
 });
