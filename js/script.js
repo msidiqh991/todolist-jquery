@@ -19,7 +19,7 @@ function handleStatus(e) {
   let checkbox = $(e).find('input');
   // checkbox.checked = checkbox.checked ? false : true;
   checkbox.prop('checked', !checkbox.prop('checked'));
-  $(e).toggleClass("pending");
+  $(e).toggleClass('pending');
   allTasks();
 }
 
@@ -44,6 +44,14 @@ $(document).ready(function(){
       allTasks();
     }
   });
+
+  // Note list
+  $('.warning').show().css({
+    'margin-bottom': '15px',
+    'padding': '10px 12px',
+    'background-color': '#ffffcc',
+    'border-left': '6px solid #ffeb3b',
+  }); 
 
   // Hover Button
   $('.clear-button').hover(function() {
